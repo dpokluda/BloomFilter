@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>BloomFilter.NetCore.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BloomFilter.NetCore\BloomFilter.NetCore.csproj" />
+    <ProjectReference Include="..\..\BloomFilter\BloomFilter.csproj" />
+    <ProjectReference Include="..\..\src\BloomFilter\BloomFilter.csproj" />
   </ItemGroup>
 
 </Project>
