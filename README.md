@@ -12,7 +12,7 @@ public interface IBloomFilter
 
 The actual filter is implemented in memory and supports serialization to JSON document.
 
-# Resources
+## Resources
 The projects is built using the following sources:
 - [BloomFilter.NetCore](https://github.com/vla/BloomFilter.NetCore) project
 - BitArray serialization is based on the following [StackOverflow](https://stackoverflow.com/questions/58279263/how-to-deserialize-bitarray-using-jsonserializer/58279913#58279913) answer
