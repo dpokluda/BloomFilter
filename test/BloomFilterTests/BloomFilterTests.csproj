@@ -7,7 +7,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>BloomFilter.NetCore.Tests</RootNamespace>
+    <RootNamespace>BloomFilter.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

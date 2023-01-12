@@ -1,17 +1,17 @@
-﻿// -------------------------------------------------------------------------
-// <copyright file="BitArrayExtensions.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation. All rights reserved.
-// </copyright>
-// -------------------------------------------------------------------------
+﻿namespace BloomFilter.Serialization;
 
-namespace BloomFilter.NetCore.Serialization;
-
+/// <summary>
+/// BitArray extension methods.
+/// </summary>
 internal static class BitArrayExtensions
 {
-    // Copied from this answer https://stackoverflow.com/a/4619295
-    // To https://stackoverflow.com/questions/560123/convert-from-bitarray-to-byte
-    // By https://stackoverflow.com/users/313088/tedd-hansen
-    // And made an extension method.
+    /// <summary>
+    /// Convert bit array to byte array.
+    /// </summary>
+    /// <param name="bits">The bit array.</param>
+    /// <returns>
+    /// Byte array.
+    /// </returns>
     public static byte[] BitArrayToByteArray(this System.Collections.BitArray bits)
     {
         byte[] ret = new byte[bits.ByteArrayLength()];
@@ -19,13 +19,27 @@ internal static class BitArrayExtensions
         return ret;
     }
 
+    /// <summary>
+    /// Number of bytes necessary to hold the bit array.
+    /// </summary>
+    /// <param name="bits">The bit array.</param>
+    /// <returns>
+    /// Integer value representing the number of bytes to hold the bit array value.
+    /// </returns>
     public static int ByteArrayLength(this System.Collections.BitArray bits)
     {
         return (bits.Length - 1) / 8 + 1;
     }
 
-    public static int ByteArrayLength(this int NumberOfBits)
+    /// <summary>
+    /// Number of bytes necessary to hold the bit array.
+    /// </summary>
+    /// <param name="numberOfBits">The number of bits.</param>
+    /// <returns>
+    /// Integer value representing the number of bytes to hold the bit array value.
+    /// </returns>
+    public static int ByteArrayLength(this int numberOfBits)
     {
-        return (NumberOfBits - 1) / 8 + 1;
+        return (numberOfBits - 1) / 8 + 1;
     }
 }

@@ -1,17 +1,22 @@
-﻿// -------------------------------------------------------------------------
-// <copyright file="Murmur3.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation. All rights reserved.
-// </copyright>
-// -------------------------------------------------------------------------
-
-namespace BloomFilter.NetCore.HashAlgorithms;
+﻿namespace BloomFilter.HashAlgorithms;
 
 /// <summary>
-///     Building a Better Bloom Filter" by Adam Kirsch and Michael Mitzenmacher,
-///     https://www.eecs.harvard.edu/~michaelm/postscripts/tr-02-05.pdf
+/// Hashing function implementing Murmur3 hashing algorithm based on paper 
+/// <a href="https://www.eecs.harvard.edu/~michaelm/postscripts/tr-02-05.pdf">Building a Better Bloom Filter</a> by Adam Kirsch and Michael Mitzenmacher.
 /// </summary>
+/// <seealso cref="HashFunction"/>
 public class Murmur3KirschMitzenmacher : HashFunction
 {
+    /// <summary>
+    /// Compute hash value for the specified data.
+    /// </summary>
+    /// <param name="data">The data to compute hash for.</param>
+    /// <param name="m">Range for the output value.</param>
+    /// <param name="k">Number of hashes to be computed.</param>
+    /// <returns>
+    /// Hash value.
+    /// </returns>
+    /// <seealso cref="BloomFilter.HashFunction.ComputeHash(byte[],int,int)"/>
     public override int[] ComputeHash(byte[] data, int m, int k)
     {
         int[] positions = new int[k];
@@ -24,7 +29,17 @@ public class Murmur3KirschMitzenmacher : HashFunction
 
         return positions;
     }
-    
+
+    /// <summary>
+    /// Calculate Murmur3 hash value.
+    /// </summary>
+    /// <param name="seed">The seed.</param>
+    /// <param name="data">The data.</param>
+    /// <param name="offset">The offset.</param>
+    /// <param name="count">Number of bytes.</param>
+    /// <returns>
+    /// Hash value.
+    /// </returns>
     protected static uint MurmurHash3_32(uint seed, byte[] data, int offset, int count)
     {
         const uint c1 = 0xcc9e2d51;

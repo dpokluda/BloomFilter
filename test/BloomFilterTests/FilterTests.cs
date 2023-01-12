@@ -1,4 +1,4 @@
-namespace BloomFilter.NetCore.Tests;
+namespace BloomFilter.Tests;
 
 [TestClass]
 public class FilterTests

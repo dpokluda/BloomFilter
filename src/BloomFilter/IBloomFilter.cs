@@ -1,32 +1,30 @@
-﻿// -------------------------------------------------------------------------
-// <copyright file="IBloomFilter.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation. All rights reserved.
-// </copyright>
-// -------------------------------------------------------------------------
-
-namespace BloomFilter.NetCore;
+﻿namespace BloomFilter;
 
 /// <summary>
-///     Represents a Bloom filter.
+/// Bloom filter interface.
 /// </summary>
-public interface IBloomFilter : IDisposable
+public interface IBloomFilter
 {
     /// <summary>
-    ///     Adds the passed value to the filter.
+    /// Add value to the filter.
     /// </summary>
-    /// <param name="element"></param>
-    /// <returns></returns>
+    /// <param name="element">The value.</param>
+    /// <returns>
+    /// Boolean value <c>true</c> if it succeeds, <c>false</c> if it fails.
+    /// </returns>
     bool Add(string element);
 
     /// <summary>
-    ///     Tests whether an element is present in the filter
+    /// Tests whether the value is present in the filter.
     /// </summary>
-    /// <param name="element"></param>
-    /// <returns></returns>
+    /// <param name="element">The value.</param>
+    /// <returns>
+    /// Boolean value <c>true</c> if the value is present in the filter, <c>false</c> if not.
+    /// </returns>
     bool Contains(string element);
 
     /// <summary>
-    ///     Removes all elements from the filter
+    /// Removes all values from the filter.
     /// </summary>
     void Clear();
 }

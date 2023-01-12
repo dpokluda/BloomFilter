@@ -1,14 +1,8 @@
-﻿// -------------------------------------------------------------------------
-// <copyright file="SerializationTests.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation. All rights reserved.
-// </copyright>
-// -------------------------------------------------------------------------
-
-using System.Diagnostics;
-using BloomFilter.NetCore.Serialization;
+﻿using System.Diagnostics;
+using BloomFilter.Serialization;
 using Newtonsoft.Json;
 
-namespace BloomFilter.NetCore.Tests;
+namespace BloomFilter.Tests;
 
 [TestClass]
 public class SerializationTests
