@@ -7,35 +7,35 @@ namespace BloomFilter;
 /// Bloom filter implementations using Murmur3KirschMitzenmacher hash algorithm.
 /// </summary>
 /// <seealso cref="BloomFilter.BaseFilter"/>
-public class Filter : BaseFilter
+public class BloomFilter : BaseFilter
 {
     private readonly object _sync = new();
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Filter"/> class.
+    /// Initializes a new instance of the <see cref="BloomFilter"/> class.
     /// </summary>
     [JsonConstructor]
-    internal Filter()
+    internal BloomFilter()
         : base()
     {}
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Filter"/> class.
+    /// Initializes a new instance of the <see cref="BloomFilter"/> class.
     /// </summary>
     /// <param name="expectedElements">Number of expected elements stored in the bloom filter.</param>
     /// <param name="errorRate">Acceptable error rate (false positives).</param>
-    public Filter(int expectedElements, double errorRate)
+    public BloomFilter(int expectedElements, double errorRate)
         : base(expectedElements, errorRate)
     {
         _hashBits = new BitArray(Capacity);
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Filter"/> class.
+    /// Initializes a new instance of the <see cref="BloomFilter"/> class.
     /// </summary>
     /// <param name="capacity">Capacity of the bloom filter.</param>
     /// <param name="hashes">Number of hash functions to use when calculating positions.</param>
-    public Filter(int capacity, int hashes)
+    public BloomFilter(int capacity, int hashes)
         : base(capacity, hashes)
     {
         _hashBits = new BitArray(Capacity);

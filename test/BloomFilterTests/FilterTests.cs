@@ -6,30 +6,30 @@ public class FilterTests
     [TestMethod]
     public void Construct()
     {
-        Assert.IsNotNull(new Filter(100, 0.01));
-        Assert.IsNotNull(new Filter(100, 2));
+        Assert.IsNotNull(new BloomFilter(100, 0.01));
+        Assert.IsNotNull(new BloomFilter(100, 2));
     }
     
     [TestMethod]
     public void Invalid()
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Filter(0, 0.01));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Filter(100, 1.1));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Filter(0, 2));
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Filter(100, 0));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new BloomFilter(0, 0.01));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new BloomFilter(100, 1.1));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new BloomFilter(0, 2));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new BloomFilter(100, 0));
     }
 
     [TestMethod]
     public void Properties()
     {
-        var filter = new Filter(100, 0.01);
+        var filter = new BloomFilter(100, 0.01);
         Assert.AreEqual(959, filter.Capacity);
         Assert.AreEqual(0.01, filter.ErrorRate);
         Assert.AreEqual(100, filter.ExpectedElements);
         Assert.AreEqual(7, filter.Hashes);
         Assert.AreEqual("Capacity:959,Hashes:7,ExpectedElements:100,ErrorRate:0.01", filter.ToString());
         
-        filter = new Filter(959, 7);
+        filter = new BloomFilter(959, 7);
         Assert.AreEqual(959, filter.Capacity);
         Assert.AreEqual(7, filter.Hashes);
     }
@@ -37,7 +37,7 @@ public class FilterTests
     [TestMethod]
     public void Add()
     {
-        var filter = new Filter(100, 0.01);
+        var filter = new BloomFilter(100, 0.01);
         Assert.IsTrue(filter.Add("one"));
         Assert.IsTrue(filter.Add("two"));
         
@@ -47,7 +47,7 @@ public class FilterTests
     [TestMethod]
     public void Contains()
     {
-        var filter = new Filter(100, 0.01);
+        var filter = new BloomFilter(100, 0.01);
         Assert.IsTrue(filter.Add("one"));
         Assert.IsTrue(filter.Add("two"));
         
@@ -59,7 +59,7 @@ public class FilterTests
     [TestMethod]
     public void Clear()
     {
-        var filter = new Filter(100, 0.01);
+        var filter = new BloomFilter(100, 0.01);
         Assert.IsTrue(filter.Add("one"));
         Assert.IsTrue(filter.Add("two"));
         

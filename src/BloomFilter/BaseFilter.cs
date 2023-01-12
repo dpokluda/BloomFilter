@@ -13,7 +13,7 @@ public abstract class BaseFilter : IBloomFilter
     /// <summary>
     /// Hash function used when calculating value positions.
     /// </summary>
-    protected HashFunction Hash { get; }
+    protected HashFunction Hash { get; } = new Murmur3KirschMitzenmacher();
 
     /// <summary>
     /// Capacity of the bloom filter.
@@ -75,7 +75,6 @@ public abstract class BaseFilter : IBloomFilter
 
         _expectedElements = expectedElements;
         _errorRate = errorRate;
-        Hash = new Murmur3KirschMitzenmacher();
 
         _capacity = BestM(expectedElements, errorRate);
         _hashes = BestK(expectedElements, Capacity);
@@ -96,7 +95,6 @@ public abstract class BaseFilter : IBloomFilter
 
         _capacity = capacity;
         _hashes = hashes;
-        Hash = new Murmur3KirschMitzenmacher();
 
         _expectedElements = BestN(hashes, capacity);
         _errorRate = BestP(hashes, capacity, ExpectedElements);
